@@ -1,7 +1,7 @@
 [project]
 name = "orbotino"
 version = "0.1.0"
-description = "Add your description here"
+description = "Bot for Twitch and Discord"
 authors = [
     { name = "mikturnal", email = "20732213+mikturnal@users.noreply.github.com" }
 ]
