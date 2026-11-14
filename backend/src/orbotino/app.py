@@ -12,6 +12,7 @@ class Application:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
         self._stop_event = asyncio.Event()
+        self.db = Database(self.settings.database_url)
 
     def request_stop(self) -> None:
         logger.info("Stop requested!")
@@ -20,7 +21,6 @@ class Application:
     async def start(self) -> None:
         logger.info("orbotino starting in %s mode", self.settings.orbotino_env)
         # startup code
-        self.db = Database(self.settings.database_url)
 
     async def stop(self) -> None:
         logger.info("orbotino stopping")

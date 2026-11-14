@@ -18,5 +18,7 @@ class TokenCipher:
         try:
             decrypted = self._fernet.decrypt(token.encode())
         except InvalidToken as e:
-            raise TokenDecryptionError("Stored token can't be decrypted.") from e
+            raise TokenDecryptionError(
+                "Stored token can't be decrypted. Did TOKEN_ENCRYPTION_KEY change?"
+            ) from e
         return decrypted.decode()
