@@ -32,8 +32,7 @@ jobs:
         run: uv run pyright
 
       - name: Tests
-        # exit code 5 = "no tests collected"; allowed until the first test exists
-        run: uv run pytest || [ $? -eq 5 ]
+        run: uv run pytest
 
   secrets:
     runs-on: ubuntu-latest
