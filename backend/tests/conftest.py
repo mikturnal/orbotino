@@ -4,7 +4,7 @@ from orbotino.core.settings import Settings
 
 REQUIRED = {
     "SECRET_KEY": "test-secret",
-    "TOKEN_ENCRYPTION_KEY": "test-key",
+    "TOKEN_ENCRYPTION_KEY": "IdTz63Vv1ui9XQt4cqwgn9TX1mAxXaN38Dh8ilGDfug=",  # gitleaks:allow
     "TWITCH_CLIENT_ID": "twitch-client-id",
     "TWITCH_CLIENT_SECRET": "twitch-client-secret",
     "TWITCH_BOT_ID": "bot-id",
