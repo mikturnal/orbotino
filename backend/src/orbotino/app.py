@@ -3,6 +3,7 @@ import logging
 import signal
 
 from orbotino.core.settings import Settings
+from orbotino.db.session import Database
 
 logger = logging.getLogger(__name__)
 
@@ -19,10 +20,12 @@ class Application:
     async def start(self) -> None:
         logger.info("orbotino starting in %s mode", self.settings.orbotino_env)
         # startup code
+        self.db = Database(self.settings.database_url)
 
     async def stop(self) -> None:
         logger.info("orbotino stopping")
         # shutdown code
+        await self.db.dispose()
         logger.info("orbotino stopped")
 
     async def run(self, install_signal_handlers: bool = True) -> None:
