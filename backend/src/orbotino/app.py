@@ -2,6 +2,7 @@ import asyncio
 import logging
 import signal
 
+from orbotino.core.bus import EventBus
 from orbotino.core.settings import Settings
 from orbotino.db.session import Database
 
@@ -13,6 +14,7 @@ class Application:
         self.settings = settings
         self._stop_event = asyncio.Event()
         self.db = Database(self.settings.database_url)
+        self.bus = EventBus()
 
     def request_stop(self) -> None:
         logger.info("Stop requested!")
@@ -26,6 +28,7 @@ class Application:
         logger.info("orbotino stopping")
         # shutdown code
         await self.db.dispose()
+        await self.bus.drain()
         logger.info("orbotino stopped")
 
     async def run(self, install_signal_handlers: bool = True) -> None:
