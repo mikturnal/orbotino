@@ -24,7 +24,7 @@ class Permission(IntEnum):
     BROADCASTER = 4
 
     @classmethod
-    def of(cls, roles: Roles) -> "Permission":
+    def of(cls, roles: Roles) -> Permission:
         if roles.broadcaster:
             return cls.BROADCASTER
         if roles.moderator:
